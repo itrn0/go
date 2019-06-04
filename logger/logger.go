@@ -1,63 +1,118 @@
 package logger
 
-var (
-	defaultLogger Logger
+import (
+	"log"
 )
 
+var (
+	logger Logger = &DefaultLogger{}
+)
+
+type DefaultLogger struct {
+}
+
+func (*DefaultLogger) Debugf(format string, args ...interface{}) {
+	log.Printf(format, args)
+}
+
+func (*DefaultLogger) Infof(format string, args ...interface{}) {
+	log.Printf(format, args)
+}
+
+func (*DefaultLogger) Warnf(format string, args ...interface{}) {
+	log.Printf(format, args)
+}
+
+func (*DefaultLogger) Errorf(format string, args ...interface{}) {
+	log.Printf(format, args)
+}
+
+func (*DefaultLogger) Fatalf(format string, args ...interface{}) {
+	log.Fatalf(format, args)
+}
+
+func (*DefaultLogger) Panicf(format string, args ...interface{}) {
+	log.Panicf(format, args)
+}
+
+func (*DefaultLogger) Debug(args ...interface{}) {
+	log.Print(args)
+}
+
+func (*DefaultLogger) Info(args ...interface{}) {
+	log.Print(args)
+}
+
+func (*DefaultLogger) Warn(args ...interface{}) {
+	log.Print(args)
+}
+
+func (*DefaultLogger) Error(args ...interface{}) {
+	log.Print(args)
+}
+
+func (*DefaultLogger) Fatal(args ...interface{}) {
+	log.Fatal(args)
+}
+
+func (*DefaultLogger) Panic(args ...interface{}) {
+	log.Panic(args)
+}
+
 func GetLogger() Logger {
-	return defaultLogger
+	return logger
 }
 
 func SetLogger(l Logger) {
-	defaultLogger = l
+	logger = l
 }
 
 func Debugf(format string, args ...interface{}) {
-	defaultLogger.Debugf(format, args...)
+	logger.Debugf(format, args...)
 }
 
 func Infof(format string, args ...interface{}) {
-	defaultLogger.Infof(format, args...)
+	logger.Infof(format, args...)
 }
 
 func Warnf(format string, args ...interface{}) {
-	defaultLogger.Warnf(format, args...)
+	logger.Warnf(format, args...)
 }
 
 func Errorf(format string, args ...interface{}) {
-	defaultLogger.Errorf(format, args...)
+	logger.Errorf(format, args...)
 }
 
 func Fatalf(format string, args ...interface{}) {
-	defaultLogger.Fatalf(format, args...)
+	logger.Fatalf(format, args...)
 }
 
 func Panicf(format string, args ...interface{}) {
-	defaultLogger.Panicf(format, args...)
+	logger.Panicf(format, args...)
 }
 
 func Debug(args ...interface{}) {
-	defaultLogger.Debug(args...)
+	logger.Debug(args...)
 }
 
 func Info(args ...interface{}) {
-	defaultLogger.Info(args...)
+	logger.Info(args...)
 }
 
 func Warn(args ...interface{}) {
-	defaultLogger.Warn(args...)
+	logger.Warn(args...)
 }
 
 func Error(args ...interface{}) {
-	defaultLogger.Error(args...)
+	logger.Error(args...)
 }
 
 func Fatal(args ...interface{}) {
-	defaultLogger.Fatal(args...)
+	logger.Fatal(args...)
 }
 
 func Panic(args ...interface{}) {
-	defaultLogger.Panic(args...)
+	logger.Panic(args...)
 }
 
 type Logger interface {
